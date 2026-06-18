@@ -1,11 +1,21 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import Layout from './components/Layout'
+import Board from './pages/Board'
+import Stats from './pages/Stats'
+import Settings from './pages/Settings'
 
-import './App.css'
-
-function App() {
+const App = () => {
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <h1 className="text-3xl font-bold text-blue-600">TrackHire 🚀</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Navigate to="/board" replace />} />
+          <Route path="board" element={<Board />} />
+          <Route path="stats" element={<Stats />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
